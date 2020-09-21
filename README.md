@@ -39,6 +39,47 @@ PASS
 ok  	calculator	0.003s
 ```
 
+**STRETCH GOAL**: Go has an excellent documentation. Help can be displayed through CLI as follows:<br/>
+```
+$ go doc testing
+package testing // import "testing"
+
+type T struct {
+	// Has unexported fields.
+}
+    T is a type passed to Test functions to manage test state and support
+    formatted test logs.
+
+    A test ends when its Test function returns or calls any of the methods
+    FailNow, Fatal, Fatalf, SkipNow, Skip, or Skipf. Those methods, as well as
+    the Parallel method, must be called only from the goroutine running the Test
+    function.
+
+    The other reporting methods, such as the variations of Log and Error, may be
+    called simultaneously from multiple goroutines.
+
+func (c *T) Cleanup(f func())
+func (t *T) Deadline() (deadline time.Time, ok bool)
+func (c *T) Error(args ...interface{})
+func (c *T) Errorf(format string, args ...interface{})
+func (c *T) Fail()
+func (c *T) FailNow()
+func (c *T) Failed() bool
+func (c *T) Fatal(args ...interface{})
+func (c *T) Fatalf(format string, args ...interface{})
+func (c *T) Helper()
+func (c *T) Log(args ...interface{})
+func (c *T) Logf(format string, args ...interface{})
+func (c *T) Name() string
+func (t *T) Parallel()
+func (t *T) Run(name string, f func(t *T)) bool
+func (c *T) Skip(args ...interface{})
+func (c *T) SkipNow()
+func (c *T) Skipf(format string, args ...interface{})
+func (c *T) Skipped() bool
+func (c *T) TempDir() string
+```
+
 Once you're done with this section, continue with:</br>
 `$ git checkout section_4`
 
