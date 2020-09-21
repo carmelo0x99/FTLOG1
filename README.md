@@ -22,6 +22,8 @@ diff -u calculator.go.orig calculator.go
  // Subtract takes two numbers and returns the result of subtracting the second
 ```
 
+To actually change in-place the code, run: `gofmt -w calculator.go`<br/>
+
 Once you've familiarized with these features, continue by running:<br/>
 `$ git checkout section_3`
 
