@@ -1,3 +1,6 @@
+## For The Love Of GO - Exercises
+### 1: Testing times
+
 Let's quickly try Go's testing features:</br>
 ```
 $ go test
