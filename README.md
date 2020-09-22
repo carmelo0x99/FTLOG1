@@ -77,4 +77,20 @@ To achieve the stretch goal of adding a `name` to our tests we must modify the f
  29                 t.Errorf("Add(%f, %f): want %f, got %f", tc.a, tc.b, tc.want, got)
  30         }
 ```
+With the changes above, errors would be reported along with their `names`:<br/>
+```
+[!] Failed test:  2 + 2 = 4
+[!] Failed test:  Douglas was here
+[!] Failed test:  101 - 100 = 1
+--- FAIL: TestAdd (0.00s)
+    calculator_test.go:29: Add(2.000000, 2.000000): want 3.000000, got 4.000000
+--- FAIL: TestMultiply (0.00s)
+    calculator_test.go:67: Multiply(6.000000, 7.000000): want 43.000000, got 42.000000
+--- FAIL: TestSubtract (0.00s)
+    calculator_test.go:48: Subtract(101.000000, 100.000000): want 111.000000, got 1.000000
+FAIL
+exit status 1
+FAIL	calculator	0.003s
+```
+**Cryptic note**: `t.Parallel()` is not our friend here
 

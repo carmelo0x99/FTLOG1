@@ -19,7 +19,7 @@ func TestAdd(t *testing.T) {
 		{a: 5, b: 0, want: 5},
 	}
 
-	t.Parallel()
+//	t.Parallel()
 	for _, tc := range testCases {
 		got := calculator.Add(tc.a, tc.b)
 		if tc.want != got {
@@ -33,15 +33,18 @@ func TestAdd(t *testing.T) {
 
 func TestSubtract(t *testing.T) {
 	testCases := []testCase{
-		{a: 101, b: 100, want: 1},
+		{a: 101, b: 100, want: 111, name: "101 - 100 = 1"},
 		{a: 2, b: 4, want: -2},
 		{a: 10, b: 3, want: 7},
 	}
 
-	t.Parallel()
+//	t.Parallel()
 	for _, tc := range testCases {
 		got := calculator.Subtract(tc.a, tc.b)
 		if tc.want != got {
+			if tc.name != "" {
+				fmt.Println("[!] Failed test: ", tc.name)
+			}
 			t.Errorf("Subtract(%f, %f): want %f, got %f", tc.a, tc.b, tc.want, got)
 		}
 	}
@@ -49,15 +52,18 @@ func TestSubtract(t *testing.T) {
 
 func TestMultiply(t *testing.T) {
 	testCases := []testCase{
-		{a: 6, b: 7, want: 42},
+		{a: 6, b: 7, want: 43, name: "Douglas was here"},
 		{a: 1000, b: 0, want: 0},
 		{a: 3, b: -3, want: -9},
 	}
 
-	t.Parallel()
+//	t.Parallel()
 	for _, tc := range testCases {
 		got := calculator.Multiply(tc.a, tc.b)
 		if tc.want != got {
+			if tc.name != "" {
+				fmt.Println("[!] Failed test: ", tc.name)
+			}
 			t.Errorf("Multiply(%f, %f): want %f, got %f", tc.a, tc.b, tc.want, got)
 		}
 	}
