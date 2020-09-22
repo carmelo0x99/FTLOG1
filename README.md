@@ -1,9 +1,9 @@
 Let's now improve upon our test strategy by making the tests more modular. We can achieve that quite easily by introducing a `struct`, such as:<br/>
 ```
-type testCase struct {
-    a, b float64
-    want float64
-}
+ 8 type testCase struct {
+ 9         a, b float64
+10         want float64
+11 }
 ```
 ... and by using **slices** to define our rewritten test functions as follows:<br/>
 ```
@@ -50,5 +50,31 @@ Next, we can fix the values for `want` and check whether the test is passed:<br/
 ```
 PASS
 ok  	calculator	0.003s
+```
+To achieve the stretch goal of adding a `name` to our tests we must modify the following:<br/>
+- add "fmt" to our import list
+```
+ 3 import (
+ 4         "calculator"
+ 5         "fmt"           <<<
+ 6         "testing"
+ 7 )
+```
+- add an appropriate field to the struct's definition:
+```
+ 9 type testCase struct {
+10         a, b float64
+11         want float64
+12         name string     <<<
+13 }
+```
+- expand each test function with additional code checking for the existance of a field named `name` and print it:<br/>
+```
+ 25                 if tc.want != got {
+ 26                         if tc.name != "" {                                     <<<
+ 27                                 fmt.Println("[!] Failed test: ", tc.name)      <<<
+ 28                         }                                                      <<<
+ 29                         t.Errorf("Add(%f, %f): want %f, got %f", tc.a, tc.b, tc.want, got)
+ 30                 }
 ```
 
