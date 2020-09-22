@@ -92,5 +92,7 @@ FAIL
 exit status 1
 FAIL	calculator	0.003s
 ```
-**Cryptic note**: `t.Parallel()` is not our friend here
+**Cryptic note**: `t.Parallel()` is not our friend here<br/>
+The next section can be reached through:<br/>
+`$ git checkout section_6`
 
