@@ -70,11 +70,11 @@ To achieve the stretch goal of adding a `name` to our tests we must modify the f
 ```
 - expand each test function with additional code checking for the existance of a field named `name` and print it:<br/>
 ```
- 25                 if tc.want != got {
- 26                         if tc.name != "" {                                     <<<
- 27                                 fmt.Println("[!] Failed test: ", tc.name)      <<<
- 28                         }                                                      <<<
- 29                         t.Errorf("Add(%f, %f): want %f, got %f", tc.a, tc.b, tc.want, got)
- 30                 }
+ 25         if tc.want != got {
+ 26                 if tc.name != "" {                                     <<<
+ 27                         fmt.Println("[!] Failed test: ", tc.name)      <<<
+ 28                 }                                                      <<<
+ 29                 t.Errorf("Add(%f, %f): want %f, got %f", tc.a, tc.b, tc.want, got)
+ 30         }
 ```
 
