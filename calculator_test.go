@@ -27,11 +27,11 @@ func TestAdd(t *testing.T) {
 }
 
 func TestSubtract(t *testing.T) {
-        testCases := []testCase{
-                {a: 101, b: 100, want: 1},
-                {a: 2, b: 4, want: -2},
-                {a: 10, b: 3, want: 7},
-        }
+	testCases := []testCase{
+		{a: 101, b: 100, want: 1},
+		{a: 2, b: 4, want: -2},
+		{a: 10, b: 3, want: 7},
+	}
 
 	t.Parallel()
 	for _, tc := range testCases {
@@ -43,11 +43,11 @@ func TestSubtract(t *testing.T) {
 }
 
 func TestMultiply(t *testing.T) {
-        testCases := []testCase{
-                {a: 6, b: 7, want: 42},
-                {a: 1000, b: 0, want: 0},
-                {a: 3, b: -3, want: -9},
-        }
+	testCases := []testCase{
+		{a: 6, b: 7, want: 42},
+		{a: 1000, b: 0, want: 0},
+		{a: 3, b: -3, want: -9},
+	}
 
 	t.Parallel()
 	for _, tc := range testCases {
@@ -57,4 +57,3 @@ func TestMultiply(t *testing.T) {
 		}
 	}
 }
-

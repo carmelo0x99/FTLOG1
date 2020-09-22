@@ -1,11 +1,11 @@
-Let's now improve upin our test strategy by making the tests more modular. With a `struct`, such as:<br/>
+Let's now improve upon our test strategy by making the tests more modular. We can achieve that quite easily by introducing a `struct`, such as:<br/>
 ```
 type testCase struct {
     a, b float64
     want float64
 }
 ```
-and the use of **slices**, our new test functions will become as follows:<br/>
+... and by using **slices** to define our rewritten test functions as follows:<br/>
 ```
 func TestXyz(t *testing.T) {
 	testCases := []testCase{
@@ -23,9 +23,9 @@ func TestXyz(t *testing.T) {
 	}
 }
 ```
-This will make it easier to create multiple test cases within each function.
+Overall, this will make it easier to create multiple test cases within each function.
 
-First off, let's make it so that the tests will fail by configuring our `testCases` **wrong**.<br/>
+First off, let's make it so that the tests will fail by configuring our `testCases` with the **wrong** values for `want`.<br/>
 Here's what the output would look like:<br/>
 ```
 go test
@@ -44,5 +44,11 @@ go test
 FAIL
 exit status 1
 FAIL	calculator	0.003s
+```
+The information that gets displayed is very useful. We can actually see the parameters we're passing to the functions, its output and the expected result.<br/>
+Next, we can fix the values for `want` and check whether the test is passed:<br/>
+```
+PASS
+ok  	calculator	0.003s
 ```
 
