@@ -9,7 +9,7 @@ FAIL
 exit status 1
 FAIL	calculator	0.003s
 ```
-
+Pay attention to `calculator_test.go:22` above, `22` is the row number we should be looking for.<br/>
 Failure comes from the following section of `calculator_test.go`:
 ```
 ...
@@ -18,7 +18,7 @@ Failure comes from the following section of `calculator_test.go`:
 19         var want float64 = 2
 20         got := calculator.Subtract(4, 2)
 21         if want != got {
-22                 t.Errorf("want %f, got %f", want, got)
+22                 t.Errorf("want %f, got %f", want, got)   <<<
 23         }
 24 }
 ```
@@ -28,8 +28,8 @@ func Subtract(a, b float64) float64 {
 	return b - a
 }
 ```
-`Subtract(a, b)` implements the following operation, `b - a`. In out test, `a = 4`, `b = 2`, `b - a = 4 - 2 = -2`.</br>
-To fix the code, we may reverse the operands as follows:</br>
+`Subtract(a, b)` implements the following operation, `b - a`. In our test, `a = 4`, `b = 2`, `b - a = 4 - 2 = -2`.</br>
+To fix the code, we choose to reverse the operands as follows:</br>
 ```
 func Subtract(a, b float64) float64 {
         return a - b
@@ -41,7 +41,7 @@ PASS
 ok  	calculator	0.003s
 ```
 
-**STRETCH GOAL**: Go has an excellent documentation. Help can be displayed through CLI as follows:<br/>
+**STRETCH GOAL**: Go provides an excellent documentation. Help can be displayed through CLI as follows:<br/>
 ```
 $ go doc testing
 package testing // import "testing"
