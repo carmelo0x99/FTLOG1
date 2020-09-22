@@ -1,3 +1,6 @@
+## For The Love Of Go - Exercises
+### 4: Go forth and multiply
+
 Objective, add a `Multiply()` function. With TDD in mind we start off by creating the test first:<br/>
 ```
 26 func TestMultiply(t *testing.T) {
