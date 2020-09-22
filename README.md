@@ -1,4 +1,4 @@
-## For The Love Of GO - Exercises
+## For The Love Of Go - Exercises
 ### 1: Testing times
 
 Let's quickly try Go's testing features:</br>
