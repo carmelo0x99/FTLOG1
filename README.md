@@ -1,5 +1,6 @@
 ## For The Love Of Go - Exercises
 ### 1: Testing times
+### 2: Getting in shape
 
 Let's quickly try Go's testing features:</br>
 ```
