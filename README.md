@@ -1,63 +1,48 @@
-Objective, add a `Multiply()` function. With TDD in mind we start off by creating the test first:<br/>
+Let's now improve upin our test strategy by making the tests more modular. With a `struct`, such as:<br/>
 ```
-26 func TestMultiply(t *testing.T) {
-27         t.Parallel()
-28         var want float64 = 42
-29         got := calculator.Multiply(6, 7)
-30         if want != got {
-31                 t.Errorf("want %f, got %f", want, got)
-32         }
-33 }
+type testCase struct {
+    a, b float64
+    want float64
+}
 ```
+and the use of **slices**, our new test functions will become as follows:<br/>
+```
+func TestXyz(t *testing.T) {
+	testCases := []testCase{
+		{a: A1, b: B1, want: W1},
+		{a: A2, b: B2, want: W2},
+		{a: A3, b: B3, want: W3},
+	}
 
-If we run `go test` now we'd, unsurprisingly, get an error:<br/>
+	t.Parallel()
+	for _, tc := range testCases {
+		got := calculator.Xyz(tc.a, tc.b)
+		if tc.want != got {
+			t.Errorf("Xyz(%f, %f): want %f, got %f", tc.a, tc.b, tc.want, got)
+		}
+	}
+}
 ```
-# calculator_test [calculator.test]
-./calculator_test.go:29:9: undefined: calculator.Multiply
-FAIL	calculator [build failed]
-```
+This will make it easier to create multiple test cases within each function.
 
-The actual `Multiply` function must be written first:<br/>
+First off, let's make it so that the tests will fail by configuring our `testCases` **wrong**.<br/>
+Here's what the output would look like:<br/>
 ```
-16 func Multiply(a, b float64) float64 {
-17 }
-```
-
-Again, running `go test` against this code will generate an error:<br/>
-```
-# calculator
-./calculator.go:18:1: missing return at end of function
-FAIL	calculator [build failed]
-```
-Let's now write a "good" function and run the test one more time:<br/>
-```
-16 func Multiply(a, b float64) float64 {
-17         return a * b
-18 }
-```
-and<br/>
-```
-PASS
-ok  	calculator	0.003s
-```
-
-Very good! Now our function seems to be doing what we expected:
-- `calculator_test.go` invokes `Multiply()` with the parameters `6` and `7`
-- the expected outcome is `42`
-- `PASS` is printed on screen<br/>
-
-What would happen instead if we were to mess with the parameters or the expected resutl? Let's try...<br/>
-```
-28         var want float64 = 41
-```
-3, 2, 1...:<br/>
-```
+go test
+--- FAIL: TestAdd (0.00s)
+    calculator_test.go:24: Add(2.000000, 2.000000): want 5.000000, got 4.000000
+    calculator_test.go:24: Add(1.000000, 1.000000): want 3.000000, got 2.000000
+    calculator_test.go:24: Add(5.000000, 0.000000): want 6.000000, got 5.000000
+--- FAIL: TestSubtract (0.00s)
+    calculator_test.go:40: Subtract(101.000000, 100.000000): want 101.000000, got 1.000000
+    calculator_test.go:40: Subtract(2.000000, 4.000000): want -1.000000, got -2.000000
+    calculator_test.go:40: Subtract(10.000000, 3.000000): want 8.000000, got 7.000000
 --- FAIL: TestMultiply (0.00s)
-    calculator_test.go:31: want 41.000000, got 42.000000
+    calculator_test.go:56: Multiply(6.000000, 7.000000): want 43.000000, got 42.000000
+    calculator_test.go:56: Multiply(1000.000000, 0.000000): want 1.000000, got 0.000000
+    calculator_test.go:56: Multiply(3.000000, -3.000000): want -8.000000, got -9.000000
 FAIL
 exit status 1
-FAIL	calculator	0.002s
+FAIL	calculator	0.003s
 ```
-Good! Yes, that's actually good!!! What it says is that `Multiply(6, 7)` yields `42`. The number we've written in the test, `41`, doesn't match, an error is thrown.</br>
-We can fix he test once and again and, wehn done, move to the next section with `git checkout section_5`.
 
