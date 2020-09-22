@@ -9,7 +9,7 @@ PASS
 ok  	calculator	0.002s
 ```
 
-Go also offers a tool to check your code is properly formatted:</br>
+Go also offers a `diff`-like tool to check your code is properly formatted:</br>
 ```
 $ gofmt -d calculator.go
 diff -u calculator.go.orig calculator.go
