@@ -1,3 +1,6 @@
+## For The Love Of Go - Exercises
+### 5: Testing to destruction
+
 Let's now improve upon our test strategy by making the tests more modular. We can achieve that quite easily by introducing a `struct`, such as:<br/>
 ```
  8 type testCase struct {
